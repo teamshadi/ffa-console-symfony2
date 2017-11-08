@@ -17,4 +17,7 @@
 /web/bundles/
 /src/AppBundle/Command/TreasuryFactory.php
 /src/AppBundle/Command/TreasuryCmtReport.php
-
+/var/
+/web/
+mfbf-orm-connection.yml
+.*swp

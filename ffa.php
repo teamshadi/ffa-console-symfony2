@@ -9,6 +9,7 @@ use AppBundle\Command\PnLCommand;
 use AppBundle\Command\TreasuryFfa017Command;
 use AppBundle\Command\SecuritiesCountryCommand;
 use AppBundle\Command\RiskAssetDetailsCommand;
+use AppBundle\Command\LargesNTradesCommand;
 
 
 
@@ -22,6 +23,7 @@ $commandPnL = new PnLCommand();
 $commandtreasuryffai007 = new TreasuryFfa017Command();
 $commandSecuritiesCountry = new SecuritiesCountryCommand();
 $commandAssetDetails = new RiskAssetDetailsCommand();
+$commandLargesNTrades = new LargesNTradesCommand();
 
 
 
@@ -34,14 +36,16 @@ $application->add($commandPnL);
 $application->add($commandtreasuryffai007);
 $application->add($commandSecuritiesCountry);
 $application->add($commandAssetDetails);
+$application->add($commandLargesNTrades);
 
-
-$application->setDefaultCommand($commandCashManagement->getName());
+/*
+//$application->setDefaultCommand($commandCashManagement->getName());
 $application->setDefaultCommand($commandPnL->getName());
 $application->setDefaultCommand($commandtreasuryffai007->getName());
 $application->setDefaultCommand($commandSecuritiesCountry->getName());
 $application->setDefaultCommand($commandAssetDetails->getName());
-
+$application->setDefaultCommand($commandLargesNTrades->getName());
+*/
 
 $application->run();
 
