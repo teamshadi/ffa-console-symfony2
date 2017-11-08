@@ -15,3 +15,6 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/src/AppBundle/Command/TreasuryFactory.php
+/src/AppBundle/Command/TreasuryCmtReport.php
+

@@ -8,28 +8,24 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
 
-class SecuritiesCountryCommand extends ContainerAwareCommand
+class RiskAssetDetailsCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
             //the name of the command (the part after "bin/console")
-            ->setname('risk:securities-countries')
+            ->setname('risk:asset-details')
 
             // the short description shown while running "php bin/console list"
-            ->setDescription('risk securities countries report.')
+            ->setDescription('risk asset details report.')
 
             //the full command description shown when running the command with
             //the "--help" option
           
-            ->setHelp('This command allows you to get the risk securities countries report...')
-         //;
+            ->setHelp('This command allows you to get the risk asset details report...')
+        ;
 
             //configure an argument
-            ->addArgument('format', InputArgument::OPTIONAL, 'how do you need the format as email or console?')
-           
-            ->addArgument('emailTo',InputArgument::OPTIONAL,'If set, the email will be send to the specific emails')
-    ;
 
           
     }
@@ -38,7 +34,7 @@ class SecuritiesCountryCommand extends ContainerAwareCommand
     {
       // outputs multiple lines to the console (adding "\n" at the end of each line)
       $output->writeln([
-        'Risk securities countries',
+        'Risk asset details',
         '============',
         
     ]);
