@@ -48,6 +48,14 @@ class CashManagementCommand extends Command
          's.akiki@ffaprivatebank.com;shadiakiki1986@gmail.com    If set, the email will be send to the specific emails',
          null
        )
+       ->addOption(
+         'nDaysBack',
+         null,
+         InputOption::VALUE_OPTIONAL,
+         '30    number of days back to compute report',
+         30
+       )
+
      ;
   }
 
@@ -55,7 +63,7 @@ class CashManagementCommand extends Command
     $format=$input->getOption('format');
     $emailTo=$input->getOption('emailTo');
     $dd=$input->getOption('dd');
-    $nDaysBack = 30;
+    $nDaysBack = $input->getOption('nDaysBack');
 
     if(!is_null($emailTo)) {
       if(!!$emailTo) $emailTo = explode(";",$emailTo);
