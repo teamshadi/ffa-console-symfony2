@@ -7,10 +7,10 @@ use Symfony\Component\Console\Application;
 use AppBundle\Command\CashManagementCommand;
 use AppBundle\Command\PnLCommand;
 use AppBundle\Command\TreasuryFfa017Command;
-use AppBundle\Command\SecuritiesCountryCommand;
+use AppBundle\Command\SecuritiesCountriesCommand;
 use AppBundle\Command\RiskAssetDetailsCommand;
 use AppBundle\Command\LargesNTradesCommand;
-
+use AppBundle\Command\AccountWithStrategyBasedMarginCommand;
 
 
 // to run the command php ffa.php treasury:cash-management --format=email
@@ -21,10 +21,10 @@ use AppBundle\Command\LargesNTradesCommand;
 $commandCashManagement = new CashManagementCommand();
 $commandPnL = new PnLCommand();
 $commandtreasuryffai007 = new TreasuryFfa017Command();
-$commandSecuritiesCountry = new SecuritiesCountryCommand();
+$commandSecuritiesCountries = new SecuritiesCountriesCommand();
 $commandAssetDetails = new RiskAssetDetailsCommand();
 $commandLargesNTrades = new LargesNTradesCommand();
-
+$commandAccountWithStrategyBasedMargin = new AccountWithStrategyBasedMarginCommand();
 
 
 $application = new Application();
@@ -34,15 +34,16 @@ $application = new Application();
 $application->add($commandCashManagement);
 $application->add($commandPnL);
 $application->add($commandtreasuryffai007);
-$application->add($commandSecuritiesCountry);
+$application->add($commandSecuritiesCountries);
 $application->add($commandAssetDetails);
 $application->add($commandLargesNTrades);
+$application->add($commandAccountWithStrategyBasedMargin);
 
 /*
 //$application->setDefaultCommand($commandCashManagement->getName());
 $application->setDefaultCommand($commandPnL->getName());
 $application->setDefaultCommand($commandtreasuryffai007->getName());
-$application->setDefaultCommand($commandSecuritiesCountry->getName());
+$application->setDefaultCommand($commandSecuritiesCountries->getName());
 $application->setDefaultCommand($commandAssetDetails->getName());
 $application->setDefaultCommand($commandLargesNTrades->getName());
 */
