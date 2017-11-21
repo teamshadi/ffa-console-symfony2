@@ -42,12 +42,20 @@ class AccountWithStrategyBasedMarginCommand extends Command
          's.akiki@ffaprivatebank.com;shadiakiki1986@gmail.com    If set, the email will be send to the specific emails',
          null
        )
+       ->addOption(
+         'location',
+         null,
+         InputOption::VALUE_OPTIONAL,
+        'location Lebanon or Dubai',
+        'Beirut'
+                                                                                        )
      ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output){
     $format=$input->getOption('format');
     $emailTo=$input->getOption('emailTo');
+    $location=$input->getOption('location');
 
     if(!is_null($emailTo)) {
       if(!!$emailTo) $emailTo = explode(";",$emailTo);
