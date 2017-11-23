@@ -17,15 +17,15 @@ class LargesNTradesCommand extends Command
   protected function configure() {
     $this
         //the name of the command (the part after "bin/console")
-       ->setname('risk:largestnTrades')
+       ->setname('risk:largenTrades')
 
 			 // the short description shown while running "php bin/console list
-       ->setDescription('PnL report.')
+       ->setDescription('largest N trades report.')
 
       //the full command description shown when running the command with
      //the "--help" option
 
-       ->setHelp('This command allows you to get the PnL report...')
+       ->setHelp('This command allows you to get the largest N trades report...')
 
 
        ->addOption(
@@ -33,7 +33,7 @@ class LargesNTradesCommand extends Command
          null,
          InputOption::VALUE_OPTIONAL,
          'console|email    how do you need the format as email or console?',
-         'email'
+         'html'
        )
        ->addOption(
          'dd',
