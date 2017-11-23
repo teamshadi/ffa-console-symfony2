@@ -30,7 +30,7 @@ class SecuritiesCountriesCommand extends Command
               'format',
               null,
               InputOption::VALUE_OPTIONAL, 
-              'how do you need the format as email or console?',
+              'how do you need the format as email or html or json',
               'console'
               )
            
@@ -61,7 +61,7 @@ class SecuritiesCountriesCommand extends Command
           
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output){
+ protected function execute(InputInterface $input, OutputInterface $output){
       $format=$input->getOption('format');
       $emailTo=$input->getOption('emailTo');
       $base=$input->getOption('base');
@@ -73,7 +73,7 @@ class SecuritiesCountriesCommand extends Command
        }
         
       if($format=="email" && !$emailTo) {
-        throw new Exception("Please specify emailTo with format=email");
+        throw new \Exception("Please specify emailTo with format=email");
 
       }
        $factory=new \FfaPhp\Common\SecuritiesFactory();
@@ -84,12 +84,16 @@ class SecuritiesCountriesCommand extends Command
            case "console":
              echo($report->toConsole());
              break;
+         
            case "email":
               $emailer = new \FfaPhp\Common\Emailer($report, $emailTo);
               $emailer->send();
               break;
+           case "quiet":
+              break;
+          
            default:
-              throw new Exception("Invalid format");
+              throw new \Exception("Invalid format");
 
                                                                      
           }
