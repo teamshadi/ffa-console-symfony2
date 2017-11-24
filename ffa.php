@@ -13,7 +13,7 @@ use AppBundle\Command\LargesNTradesCommand;
 use AppBundle\Command\AccountWithStrategyBasedMarginCommand;
 use AppBundle\Command\ToptenPositionsCommand;
 use AppBundle\Command\ToptenNavChangesCommand;
-
+use AppBundle\Command\KycCommand;
 // to run the command php ffa.php treasury:cash-management --format=email
 // php ffa.php treasury:cash-management
 
@@ -28,6 +28,8 @@ $commandLargesNTrades = new LargesNTradesCommand();
 $commandAccountWithStrategyBasedMargin = new AccountWithStrategyBasedMarginCommand();
 $commandToptenPositions = new ToptenPositionsCommand();
 $commandToptenNavChanges = new ToptenNavChangesCommand();
+$commandKyc = new KycCommand();
+
 
 $application = new Application();
 
@@ -42,6 +44,7 @@ $application->add($commandLargesNTrades);
 $application->add($commandAccountWithStrategyBasedMargin);
 $application->add($commandToptenPositions);
 $application->add($commandToptenNavChanges);
+$application->add($commandKyc);
 
 /*
 //$application->setDefaultCommand($commandCashManagement->getName());
