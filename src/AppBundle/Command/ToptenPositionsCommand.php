@@ -2,10 +2,10 @@
 
 namespace AppBundle\Command;
 
-use FfaPhp\Common\PositionManagerFactory;
-use MfBfDriver\Marketflow\Portfolios;
-use MfBfDriver\Common\MarketflowClient;
-use FfaPhp\MfBfExtended\Utils;
+use \FfaPhp\Common\PositionManagerFactory;
+use \MfBfDriver\Marketflow\Portfolios;
+use \MfBfDriver\Common\MarketflowClient;
+use \FfaPhp\MfBfExtended\Utils;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -80,21 +80,25 @@ class ToptenpositionsCommand extends Command
          'location should be Beirut,Dubai pr test',
          'Beirut'
           )
+        
 
-      /* ->addOption(
-          'publihToBlog',
+        ->addOption(
+          'publishToBlog',
          null,
-         'publish to blog should be true or false',
-         False
-       )
+         InputOption::VALUE_OPTIONAL,
+         'publish to blog',
+         null
+
+     )
        ->addOption(
           'notifyTracker',
          null,
          InputOption::VALUE_OPTIONAL,
-         'notify tracker should be true or false',
-          False
-         )
-*/
+         'notify tracker',
+         null
+
+     )
+
      ;
     }
  
@@ -106,8 +110,8 @@ class ToptenpositionsCommand extends Command
     $N = $input->getOption('N');
     $base=$input->getOption('base');
     $location=$input->getOption('location');
-  #  $notifyTracker=$input->getOption('notifyTracker');
-   # $publishToBlog=$input->getOption('publishToBlog');
+    $notifyTracker=$input->getOption('notifyTracker');
+    $publishToBlog=$input->getOption('publishToBlog');
     
     if(!is_null($emailTo)) {
       if(!!$emailTo) $emailTo = explode(";",$emailTo);
@@ -127,7 +131,12 @@ class ToptenpositionsCommand extends Command
     $nmf = new \FfaPhp\Common\PositionManagerFactory($d1,$d2,$N,false,$mfWr);
     $nm = $nmf->generate();
 
-        
+     
+    if(!is_null($publishToBlog)) {
+      $nm->publish();
+     }
+                 
+            
     switch($format) {
       case "html":
         echo($nm->toHtml());
@@ -143,7 +152,10 @@ class ToptenpositionsCommand extends Command
       default:
         throw new \Exception("Invalid format");
     }
-
+  
+      if(!is_null($notifyTracker)) {
+         \FfaPhp\MfBfExtended\Utils::contactTracker("topTenPositionChanges.php");
+      }
   }
 
 }
