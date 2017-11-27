@@ -14,6 +14,8 @@ use AppBundle\Command\AccountWithStrategyBasedMarginCommand;
 use AppBundle\Command\ToptenPositionsCommand;
 use AppBundle\Command\ToptenNavChangesCommand;
 use AppBundle\Command\KycCommand;
+use AppBundle\Command\MgapCommand;
+
 // to run the command php ffa.php treasury:cash-management --format=email
 // php ffa.php treasury:cash-management
 
@@ -29,7 +31,7 @@ $commandAccountWithStrategyBasedMargin = new AccountWithStrategyBasedMarginComma
 $commandToptenPositions = new ToptenPositionsCommand();
 $commandToptenNavChanges = new ToptenNavChangesCommand();
 $commandKyc = new KycCommand();
-
+$commandMgap = new MgapCommand();
 
 $application = new Application();
 
@@ -45,6 +47,7 @@ $application->add($commandAccountWithStrategyBasedMargin);
 $application->add($commandToptenPositions);
 $application->add($commandToptenNavChanges);
 $application->add($commandKyc);
+$application->add($commandMgap);
 
 /*
 //$application->setDefaultCommand($commandCashManagement->getName());
